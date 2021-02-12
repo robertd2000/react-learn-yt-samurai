@@ -7,23 +7,28 @@ import Dialogs from './components/Dialogs/Dialogs';
 import { BrowserRouter, Route } from 'react-router-dom';
 import News from './components/News/News';
 import Music from './components/Music/Music';
+import Friends from './components/Sitebar/Friends';
 
-const App = () => {
+const App = ({state}) => {
+  const {profilePage, messagesPage, sitebar} = state
   return (
-    <BrowserRouter>
       <div className='app__wrapper'>
         <Header />
         <Navbar />
         <div className='app-wrapper-content'>
-          <Route path='/dialogs' component={Dialogs} />
-          <Route path='/profile' component={Profile} />
+          <Route path='/dialogs' 
+            render={() => <Dialogs 
+              state={messagesPage} />} />
+          <Route path='/profile' 
+            render={() => <Profile 
+              state={profilePage} />} />
           <Route path='/news' component={News} />
           <Route path='/music' component={Music} />
+          <Route path='/friends' 
+            render={() => <Friends state={sitebar} />} />
         </div>
 
-      </div>
-    </BrowserRouter>
-    
+      </div>    
   )
 }
 

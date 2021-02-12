@@ -1,46 +1,20 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import DialogItem from './DialogItem/DialogItem';
 import s from './Dialogs.module.css';
+import Message from './Messages/MessageItem';
 
-const DialogItem = (props) => {
-    return (
-        <div className={s.dialog}>
-            <NavLink to={`/dialogs/${props.id}`}>{props.name}</NavLink>  
-        </div>
-    )
-}
 
-const Message = props => {
-    return (
-        <div className={s.message}>
-            {props.message}
-        </div>
-    )
-}
+const Dialogs = ({state}) => {
+    const {dialogs, messages} = state
+    let dialogsElements = dialogs.map(dialog => <DialogItem name={dialog.name} id={dialog.id} />)
 
-const Dialogs = () => {
+    let messagesElements = messages.map(message => <Message message={message.message} id={message.id} />)
 
-    let dialogsData = [
-        {id: 1, name: 'Jonathan'},
-        {id: 2, name: 'Joseph'},
-        {id: 3, name: 'Dio'},
-        {id: 4, name: 'Jotaro'},
-        {id: 5, name: 'Josuke'},
-
-    ]
-
-    let dialogsElements = dialogsData.map(dialog => <DialogItem name={dialog.name} id={dialog.id} />)
-
-    let messagesData = [
-        {id: 1, message: 'Hi'},
-        {id: 2, message: 'Hello'},
-        {id: 3, message: 'Hi'},
-        {id: 4, message: 'Hi'},
-        {id: 5, message: 'Hi'},
-    ]
-
-    let messagesElements = messagesData.map(message => <Message name={message.message} id={message.id} />)
-
+    let mesageItem = React.createRef()
+    const addMessage = () => {
+        let text = mesageItem.current.value
+        alert(text)
+    }
     return (
 
         <div className={s.dialogs}>
@@ -52,6 +26,11 @@ const Dialogs = () => {
             <div className={s.messages}>
                 {messagesElements}
             </div>
+            <div>
+                <textarea ref={mesageItem}></textarea>
+                <button onClick={addMessage} >Add message</button>
+            </div>
+            
         </div>
     )
 }
