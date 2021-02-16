@@ -2,7 +2,7 @@ import React from 'react';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
 
-const MyPosts = ({postsData, addPost, newPostText, updatenewPostText}) => {
+const MyPosts = ({postsData, newPostText, dispatch}) => {
 
     let postsElements = postsData.map(post => <Post message={post.message} likes={post.likesCount} />)
 
@@ -10,12 +10,13 @@ const MyPosts = ({postsData, addPost, newPostText, updatenewPostText}) => {
 
     const addPosts = () => {
         // let text = newPostElement.current.value
-        addPost()
+        dispatch({type: 'ADD-POST'})
     }
 
     let onPostChange  = () => {
         let text = newPostElement.current.value
-        updatenewPostText(text)
+        let action = {type: 'UPDATE-NEW-POST-TEXT', newPostText: text}
+        dispatch(action)
     }
 
     return (

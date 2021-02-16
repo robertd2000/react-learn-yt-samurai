@@ -3,7 +3,7 @@ import MyPosts from './MyPosts/MyPosts';
 import s from './Profile.module.css';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 
-const Profile = ({state, addPost, updatenewPostText}) => {
+const Profile = ({state, dispatch}) => {
     const {posts, newPostText} = state
     return (
         <div> 
@@ -11,8 +11,8 @@ const Profile = ({state, addPost, updatenewPostText}) => {
             <MyPosts 
                 postsData={posts}
                 newPostText={newPostText}
-                addPost={addPost}
-                updatenewPostText={updatenewPostText} />
+                dispatch={dispatch}
+            />
         </div>
     )
 }
