@@ -1,3 +1,8 @@
+const ADD_POST = 'ADD-POST'
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
+const ADD_DIALOG = 'ADD_DIALOG'
+const UPDATE_NEW_DIALOGS_TEXT = 'UPDATE_NEW_DIALOGS_TEXT'
+
 let store = {
     _state: {
         profilePage: {
@@ -17,6 +22,7 @@ let store = {
                 {id: 6, name: 'Jorno'},
                 {id: 7, name: 'Kars'},
             ],
+            newDialogsText: '',
             messages: [
                 {id: 1, message: 'Hi'},
                 {id: 2, message: 'Hello'},
@@ -37,11 +43,13 @@ let store = {
             ]
         }
     },
-    getState() {
-        return this._state
-    },
+
     _callSubscriber() {
         console.log('state');
+    },
+
+    getState() {
+        return this._state
     },
 
     subscribe(observer) {
@@ -49,7 +57,7 @@ let store = {
     },
 
     dispatch(action) {
-        if (action.type === 'ADD-POST') {
+        if (action.type === ADD_POST) {
             let newPost = {
                 id: 5,
                 message: this._state.profilePage.newPostText,
@@ -59,13 +67,42 @@ let store = {
             this._state.profilePage.posts.push(newPost)
             this._state.profilePage.newPostText = ''
             this._callSubscriber(this._state)
-        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+        } else if (action.type === UPDATE_NEW_POST_TEXT) {
             this._state.profilePage.newPostText = action.newPostText
+            this._callSubscriber(this._state)
+        } else if (action.type === ADD_DIALOG) {
+            let newDialog = {
+                id: 11,
+                name: this._state.messagesPage.newDialogsText
+            }
+
+            this._state.messagesPage.dialogs.push(newDialog)
+            this._state.messagesPage.newDialogsText = ''
+            this._callSubscriber(this._state)
+        } else if (action.type === UPDATE_NEW_DIALOGS_TEXT) {
+            this._state.messagesPage.newDialogsText = action.newDialogText
             this._callSubscriber(this._state)
         }
     }
 }
 
+export const addPostActionCreator = () => ({
+    type: ADD_POST
+})
+
+export const updateNewPostTextActionCreator = text => ({
+    type: UPDATE_NEW_POST_TEXT,
+    newPostText: text
+})
+
+export const addDialog = () => ({
+    type: ADD_DIALOG
+})
+
+export const updateNewDialogTextActionCreator = text => ({
+    type: UPDATE_NEW_DIALOGS_TEXT,
+    newDialogText: text
+})
 
 export default store
 window.store = store
