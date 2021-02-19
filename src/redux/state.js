@@ -1,7 +1,7 @@
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
-const ADD_DIALOG = 'ADD_DIALOG'
-const UPDATE_NEW_DIALOGS_TEXT = 'UPDATE_NEW_DIALOGS_TEXT'
+const ADD_MESSAGE = 'ADD_MESSAGE'
+const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE_NEW_MESSAGE_TEXT'
 
 let store = {
     _state: {
@@ -22,7 +22,6 @@ let store = {
                 {id: 6, name: 'Jorno'},
                 {id: 7, name: 'Kars'},
             ],
-            newDialogsText: '',
             messages: [
                 {id: 1, message: 'Hi'},
                 {id: 2, message: 'Hello'},
@@ -34,6 +33,7 @@ let store = {
                 {id: 8, message: 'Yo'},
                 {id: 9, message: 'Yo'},
             ],
+            newMessageText: '',
         },
         sitebar: {
             friends: [
@@ -70,17 +70,18 @@ let store = {
         } else if (action.type === UPDATE_NEW_POST_TEXT) {
             this._state.profilePage.newPostText = action.newPostText
             this._callSubscriber(this._state)
-        } else if (action.type === ADD_DIALOG) {
-            let newDialog = {
+        } else if (action.type === ADD_MESSAGE) {
+            let newMessage = {
                 id: 11,
-                name: this._state.messagesPage.newDialogsText
+                message: this._state.messagesPage.newMessageText
             }
 
-            this._state.messagesPage.dialogs.push(newDialog)
-            this._state.messagesPage.newDialogsText = ''
+            this._state.messagesPage.messages.push(newMessage)
+            this._state.messagesPage.newMessageText = ''
+            console.log(this._state.messagesPage.messages);
             this._callSubscriber(this._state)
-        } else if (action.type === UPDATE_NEW_DIALOGS_TEXT) {
-            this._state.messagesPage.newDialogsText = action.newDialogText
+        } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
+            this._state.messagesPage.newMessageText = action.newDialogText
             this._callSubscriber(this._state)
         }
     }
@@ -95,12 +96,12 @@ export const updateNewPostTextActionCreator = text => ({
     newPostText: text
 })
 
-export const addDialog = () => ({
-    type: ADD_DIALOG
+export const addMessage = () => ({
+    type: ADD_MESSAGE
 })
 
-export const updateNewDialogTextActionCreator = text => ({
-    type: UPDATE_NEW_DIALOGS_TEXT,
+export const updateNewMessageTextActionCreator = text => ({
+    type: UPDATE_NEW_MESSAGE_TEXT,
     newDialogText: text
 })
 
