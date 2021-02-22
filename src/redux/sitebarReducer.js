@@ -1,4 +1,6 @@
-export const sitebarReducer = (state, action) => {
+const initialState = {}
+
+export const sitebarReducer = (state=initialState, action) => {
     
 
     return state

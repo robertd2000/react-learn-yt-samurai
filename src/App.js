@@ -8,23 +8,22 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Friends from './components/Sitebar/Friends';
+import DialogsContainer from './components/Dialogs/DialogsContainer';
 
-const App = ({dispatch, state}) => {
-  const {profilePage, messagesPage, sitebar} = state
+const App = ({dispatch, state, store}) => {
+  const { messagesPage, sitebar } = state
   return (
       <div className='app__wrapper'>
         <Header />
         <Navbar />
         <div className='app-wrapper-content'>
           <Route path='/dialogs' 
-            render={() => <Dialogs 
-              state={messagesPage}
-              dispatch={dispatch}
+            render={() => <DialogsContainer 
+              store={store}
               />} />
           <Route path='/profile' 
-              render={() => <Profile 
-              state={profilePage}
-              dispatch={dispatch}
+              render={() => <Profile
+                store={store}
             />} />
           <Route path='/news' component={News} />
           <Route path='/music' component={Music} />
