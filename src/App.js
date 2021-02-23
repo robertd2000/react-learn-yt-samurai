@@ -10,25 +10,21 @@ import Music from './components/Music/Music';
 import Friends from './components/Sitebar/Friends';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 
-const App = ({dispatch, state, store}) => {
-  const { messagesPage, sitebar } = state
+const App = () => {
+  // const { messagesPage, sitebar } = state{dispatch, state, store}
   return (
       <div className='app__wrapper'>
         <Header />
         <Navbar />
         <div className='app-wrapper-content'>
           <Route path='/dialogs' 
-            render={() => <DialogsContainer 
-              store={store}
-              />} />
+            render={() => <DialogsContainer />} />
           <Route path='/profile' 
-              render={() => <Profile
-                store={store}
-            />} />
+              render={() => <Profile />} />
           <Route path='/news' component={News} />
           <Route path='/music' component={Music} />
-          <Route path='/friends' 
-            render={() => <Friends state={sitebar} />} />
+          {/* <Route path='/friends' 
+            render={() => <Friends state={sitebar} />} /> */}
         </div>
 
       </div>    
