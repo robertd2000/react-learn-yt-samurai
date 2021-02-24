@@ -5,9 +5,9 @@ import Message from './Messages/MessageItem';
 
 const Dialogs = ({messagesPage, sendMessage, inputHandler}) => {
     const {dialogs, messages, newMessageText} = messagesPage
-    let dialogsElements = dialogs.map(dialog => <DialogItem name={dialog.name} id={dialog.id} />)
+    let dialogsElements = dialogs.map(dialog => <DialogItem name={dialog.name} id={dialog.id} key={dialog.id} />)
 
-    let messagesElements = messages.map(message => <Message message={message.message} id={message.id} />)
+    let messagesElements = messages.map(message => <Message message={message.message} id={message.id} key={message.id} />)
 
     const addMessageHandler  = () => {
         sendMessage()
