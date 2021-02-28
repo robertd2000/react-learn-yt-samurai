@@ -9,6 +9,7 @@ import News from './components/News/News';
 import Music from './components/Music/Music';
 import Friends from './components/Sitebar/Friends';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
+import UsersContainer from './components/Users/UsersContainer';
 
 const App = () => {
   // const { messagesPage, sitebar } = state{dispatch, state, store}
@@ -21,6 +22,9 @@ const App = () => {
             render={() => <DialogsContainer />} />
           <Route path='/profile' 
               render={() => <Profile />} />
+
+          <Route path='/users' 
+              render={() => <UsersContainer />} />
           <Route path='/news' component={News} />
           <Route path='/music' component={Music} />
           {/* <Route path='/friends' 
