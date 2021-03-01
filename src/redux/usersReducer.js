@@ -1,6 +1,9 @@
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS = 'SET_USERS'
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
+const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT'
+
 
 const initialState = {
     users: [
@@ -9,6 +12,9 @@ const initialState = {
         // {id: 3, photoUrl: 'https://www.vertexacc.com/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png', followed: false, fullName: 'Alex', status: 'I am boss 3', location: {city: "London", country: 'UK'}},
         // {id: 4, photoUrl: 'https://www.vertexacc.com/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png', followed: true, fullName: 'Vasya', status: 'I am boss', location: {city: "SPB", country: 'Russia'}},
     ],
+    pageSize: 5,
+    totalUsersCount: 0,
+    currentPage: 2,
 }
 
 export const userReducer = (state=initialState, action) => {
@@ -45,6 +51,20 @@ export const userReducer = (state=initialState, action) => {
                 ]
             }
         }
+
+        case SET_CURRENT_PAGE: {
+            return {
+                ...state,
+                currentPage: action.currentPage
+            }
+        }
+
+        case SET_TOTAL_USERS_COUNT: {
+            return {
+                ...state,
+                totalUsersCount: action.totalCount
+            }
+        }
             
         default:
             return state
@@ -64,4 +84,14 @@ export const unFollowAC = (userId) => ({
 export const setUsersAC = users => ({
     type: SET_USERS, 
     users
+})
+
+export const setCurrentPageAC = currentPage => ({
+    type: SET_CURRENT_PAGE, 
+    currentPage
+})
+
+export const setTotalUsersCountAC = totalCount => ({
+    type: SET_TOTAL_USERS_COUNT, 
+    totalCount
 })
