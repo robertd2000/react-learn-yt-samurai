@@ -2,14 +2,12 @@ import React from 'react';
 import MyPostsContainer from './MyPosts/MyPostsContainer';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 
-const Profile = ({store}) => {
+const Profile = ({profile}) => {
 
     return (
         <div> 
-            <ProfileInfo />
-            <MyPostsContainer 
-                store={store}
-            />
+            <ProfileInfo profile={profile} />
+            <MyPostsContainer />
         </div>
     )
 }
