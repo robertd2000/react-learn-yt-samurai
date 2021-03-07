@@ -14,14 +14,26 @@ export const usersAPI = {
             .then(response => response.data)
     },
 
-    deleteUsers(id) {
+    unfollow(id) {
         return instance.delete(`follow/${id}`)
             .then(response => response.data)
     },
     
-    followUsers(id) {
+    follow(id) {
         return instance.post(`follow/${id}`, null)
             .then(response => response.data)
-    }
+    },
 }
 
+export const profileAPI = {
+    getUserProfile(userId) {
+        return instance.get(`profile/${userId}`)
+    },
+}
+
+export const authAPI = {
+    auth() {
+        return instance.get(`auth/me`).
+            then(response => response.data)
+    },
+}

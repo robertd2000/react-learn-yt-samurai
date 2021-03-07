@@ -1,3 +1,5 @@
+import { usersAPI } from '../api/api';
+
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS = 'SET_USERS'
@@ -92,32 +94,32 @@ export const userReducer = (state=initialState, action) => {
     }
 }
 
-export const followAC = (userId) => ({
+export const followSuccess = (userId) => ({
     type: FOLLOW,
     userId
 })
 
-export const unFollowAC = (userId) => ({
+export const unFollowSuccess = (userId) => ({
     type: UNFOLLOW,
     userId
 })
 
-export const setUsersAC = users => ({
+export const setUsers = users => ({
     type: SET_USERS, 
     users
 })
 
-export const setCurrentPageAC = currentPage => ({
+export const setCurrentPage = currentPage => ({
     type: SET_CURRENT_PAGE, 
     currentPage
 })
 
-export const setTotalUsersCountAC = totalCount => ({
+export const setTotalUsersCount = totalCount => ({
     type: SET_TOTAL_USERS_COUNT, 
     totalCount
 })
 
-export const toggleIsFetchingAC  = isFetching => ({
+export const toggleIsFetching  = isFetching => ({
     type: TOGGLE_IS_FETCING,
     isFetching
 })  
@@ -127,3 +129,39 @@ export const toggleIsFollowingProgress  = (isFetching, userId) => ({
     isFetching,
     userId,
 })  
+
+
+export const getUsers = (currentPage, pageSize) => dispatch => {
+    dispatch(toggleIsFetching(true))
+
+        usersAPI.getUsers(currentPage, pageSize)
+            .then(data => {
+                dispatch(toggleIsFetching(false))
+                dispatch(setUsers(data.items))
+                dispatch(setTotalUsersCount(data.totalCount))
+            })
+}
+
+export const unFollow = (id) => dispatch => {
+    dispatch(toggleIsFollowingProgress(true, id))
+        usersAPI.unfollow(id)
+            .then(data => {
+                if (data.resultCode === 0) {
+                    dispatch(unFollowSuccess(id))
+                }
+                dispatch(toggleIsFollowingProgress(false, id))
+
+        })
+}
+
+export const follow = (id) => dispatch => {
+    dispatch(toggleIsFollowingProgress(true, id))
+        usersAPI.follow(id)
+            .then(data => {
+                if (data.resultCode === 0) {
+                    dispatch(followSuccess(id))
+                }
+                dispatch(toggleIsFollowingProgress(false, id))
+
+        })
+}

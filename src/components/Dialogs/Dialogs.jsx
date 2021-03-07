@@ -1,9 +1,10 @@
 import React from 'react';
+import { Redirect } from 'react-router';
 import DialogItem from './DialogItem/DialogItem';
 import s from './Dialogs.module.css';
 import Message from './Messages/MessageItem';
 
-const Dialogs = ({messagesPage, sendMessage, inputHandler}) => {
+const Dialogs = ({messagesPage, sendMessage, inputHandler, isAuth}) => {
     const {dialogs, messages, newMessageText} = messagesPage
     let dialogsElements = dialogs.map(dialog => <DialogItem name={dialog.name} id={dialog.id} key={dialog.id} />)
 
@@ -17,6 +18,11 @@ const Dialogs = ({messagesPage, sendMessage, inputHandler}) => {
         let text = e.target.value
         inputHandler(text)
     }
+
+    if (!isAuth) {
+        return <Redirect to='/login' />
+    }
+
     return (
 
         <div className={s.dialogs}>
