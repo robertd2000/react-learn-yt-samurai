@@ -14,26 +14,21 @@ import Login from './components/Login/Login';
 const App = () => {
   // const { messagesPage, sitebar } = state{dispatch, state, store}
   return (
-      <div className='app__wrapper'>
-        <HeaderContainer />
-        <Navbar />
-        <div className='app-wrapper-content'>
-          <Route path='/dialogs' 
-            render={() => <DialogsContainer />} />
-          <Route path='/profile/:userId?' 
-              render={() => <ProfileContainer />} />
-          <Route path='/users' 
-              render={() => <UsersContainer />} />
-          <Route path='/news' component={News} />
-          <Route path='/music' component={Music} />
-          <Route path='/login' 
-              render={() => <Login />} />
-          {/* <Route path='/friends' 
+    <div className="app__wrapper">
+      <HeaderContainer />
+      <Navbar />
+      <div className="app-wrapper-content">
+        <Route path="/dialogs" render={() => <DialogsContainer />} />
+        <Route path="/profile/:userId?" render={() => <ProfileContainer />} />
+        <Route path="/users" render={() => <UsersContainer />} />
+        <Route path="/news" component={News} />
+        <Route path="/music" component={Music} />
+        <Route path="/login" render={() => <Login />} />
+        {/* <Route path='/friends' 
             render={() => <Friends state={sitebar} />} /> */}
-        </div>
-
-      </div>    
-  )
-}
+      </div>
+    </div>
+  );
+};
 
 export default App;
