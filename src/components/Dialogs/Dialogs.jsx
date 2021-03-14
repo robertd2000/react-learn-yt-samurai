@@ -1,6 +1,11 @@
 import React from 'react';
 import { Redirect } from 'react-router';
 import { Field, reduxForm } from 'redux-form';
+import {
+  maxLengthCreator,
+  requiredField,
+} from '../../utils/validators/validators';
+import { TextArea } from '../common/DormControls/FormControls';
 import DialogItem from './DialogItem/DialogItem';
 import s from './Dialogs.module.css';
 import Message from './Messages/MessageItem';
@@ -35,13 +40,16 @@ const Dialogs = ({ messagesPage, sendMessage, isAuth }) => {
   );
 };
 
+const maxLength50 = maxLengthCreator(50);
+
 const DialogForm = ({ handleSubmit }) => {
   return (
     <form onSubmit={handleSubmit}>
       <Field
         placeholder="Enter your message"
         name="text"
-        component={'textarea'}
+        component={TextArea}
+        validate={[requiredField, maxLength50]}
       />
       <button>Add message</button>
     </form>
