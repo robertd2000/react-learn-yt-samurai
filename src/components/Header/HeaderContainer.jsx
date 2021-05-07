@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import { authThunc, logout } from '../../redux/authReducer';
 
 class HeaderContainer extends React.Component {
-  componentDidMount() {
-    this.props.authThunc();
-  }
+  // componentDidMount() {
+  //   this.props.authThunc();
+  // }
 
   render() {
     return (
@@ -23,6 +23,6 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, {
-  authThunc,
+  // authThunc,
   logout,
 })(HeaderContainer);

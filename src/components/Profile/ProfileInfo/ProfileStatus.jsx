@@ -1,57 +1,42 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
-export class ProfileStatus extends React.Component {
-  state = {
-    editMode: false,
-    status: this.props.status,
+export const ProfileStatus = (props) => {
+  const [editMode, setEditMode] = useState(false);
+  const [status, setStatus] = useState(props.status);
+
+  const activateMode = () => setEditMode(true);
+  const deactivateMode = () => {
+    setEditMode(false);
+    props.updateStatus(status);
   };
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.status !== this.props.status) {
-      this.setState({
-        status: this.props.status,
-      });
-    }
-  }
+  useEffect(() => {
+    setStatus(props.status);
+  }, [props.status]);
 
-  activateEditMode = () => {
-    this.setState({
-      editMode: true,
-    });
+  const onStatusChange = (e) => {
+    setStatus(e.target.value);
   };
 
-  deactivateEditMode = () => {
-    this.setState({
-      editMode: false,
-    });
-    this.props.updateStatus(this.state.status);
-  };
-
-  onStatusChange = (e) => {
-    this.setState({ status: e.target.value });
-  };
-
-  render() {
-    return (
-      <div>
-        {!this.state.editMode && (
-          <div>
-            <span onDoubleClick={this.activateEditMode}>
-              {this.props.status || '----------'}
-            </span>
-          </div>
-        )}
-        {this.state.editMode && (
-          <div>
-            <input
-              autoFocus={true}
-              onChange={this.onStatusChange}
-              onBlur={this.deactivateEditMode}
-              value={this.state.status}
-            />
-          </div>
-        )}
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      {!editMode && (
+        <div>
+          <span onDoubleClick={activateMode}>
+            {props.status || '----------'}
+          </span>
+        </div>
+      )}
+      {editMode && (
+        <div>
+          <input
+            autoFocus={true}
+            onBlur={deactivateMode}
+            onChange={onStatusChange}
+            value={status}
+          />
+        </div>
+      )}
+    </div>
+  );
+};
