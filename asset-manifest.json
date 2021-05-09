@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/react-learn-yt-samurai/static/css/main.b955c4c6.chunk.css",
+    "main.js": "/react-learn-yt-samurai/static/js/main.b491908b.chunk.js",
+    "main.js.map": "/react-learn-yt-samurai/static/js/main.b491908b.chunk.js.map",
+    "runtime-main.js": "/react-learn-yt-samurai/static/js/runtime-main.4977beeb.js",
+    "runtime-main.js.map": "/react-learn-yt-samurai/static/js/runtime-main.4977beeb.js.map",
+    "static/js/2.0b7edbda.chunk.js": "/react-learn-yt-samurai/static/js/2.0b7edbda.chunk.js",
+    "static/js/2.0b7edbda.chunk.js.map": "/react-learn-yt-samurai/static/js/2.0b7edbda.chunk.js.map",
+    "static/css/3.428f918d.chunk.css": "/react-learn-yt-samurai/static/css/3.428f918d.chunk.css",
+    "static/js/3.443e251e.chunk.js": "/react-learn-yt-samurai/static/js/3.443e251e.chunk.js",
+    "static/js/3.443e251e.chunk.js.map": "/react-learn-yt-samurai/static/js/3.443e251e.chunk.js.map",
+    "static/css/4.c6269aee.chunk.css": "/react-learn-yt-samurai/static/css/4.c6269aee.chunk.css",
+    "static/js/4.e1c1e6a7.chunk.js": "/react-learn-yt-samurai/static/js/4.e1c1e6a7.chunk.js",
+    "static/js/4.e1c1e6a7.chunk.js.map": "/react-learn-yt-samurai/static/js/4.e1c1e6a7.chunk.js.map",
+    "static/js/5.b3d7318c.chunk.js": "/react-learn-yt-samurai/static/js/5.b3d7318c.chunk.js",
+    "static/js/5.b3d7318c.chunk.js.map": "/react-learn-yt-samurai/static/js/5.b3d7318c.chunk.js.map",
+    "index.html": "/react-learn-yt-samurai/index.html",
+    "static/css/3.428f918d.chunk.css.map": "/react-learn-yt-samurai/static/css/3.428f918d.chunk.css.map",
+    "static/css/4.c6269aee.chunk.css.map": "/react-learn-yt-samurai/static/css/4.c6269aee.chunk.css.map",
+    "static/css/main.b955c4c6.chunk.css.map": "/react-learn-yt-samurai/static/css/main.b955c4c6.chunk.css.map",
+    "static/js/2.0b7edbda.chunk.js.LICENSE.txt": "/react-learn-yt-samurai/static/js/2.0b7edbda.chunk.js.LICENSE.txt",
+    "static/media/loader.91319f38.gif": "/react-learn-yt-samurai/static/media/loader.91319f38.gif",
+    "static/media/user.e8348d6f.png": "/react-learn-yt-samurai/static/media/user.e8348d6f.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4977beeb.js",
+    "static/js/2.0b7edbda.chunk.js",
+    "static/css/main.b955c4c6.chunk.css",
+    "static/js/main.b491908b.chunk.js"
+  ]
+}
